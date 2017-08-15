@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context="tw.timlu.progress.MainActivity">
 
-       <tw.timlu.progressview.ProgressView
+       <tw.timlu.progressview.RoundProgressView
            android:id="@+id/draw_view"
            android:layout_width="match_parent"
-           android:layout_height="40dp"
+           android:layout_height="8dp"
            android:layout_marginLeft="20dp"
            android:layout_marginRight="20dp"
            android:background="@color/colorPrimaryDark"

@@ -8,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.ViewTreeObserver;
 
 import tw.timlu.progressview.ProgressView;
+import tw.timlu.progressview.RoundProgressView;
 
 /**
  * Created by juntinglu on 2017/5/20.
@@ -15,7 +16,7 @@ import tw.timlu.progressview.ProgressView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ProgressView d;
+    RoundProgressView d;
     int w, h;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         final float max = 100;
         final float c = 40;
-        d = (ProgressView) findViewById(R.id.draw_view);
+        d = (RoundProgressView) findViewById(R.id.draw_view);
         d.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                d.setSWH(20, h);
+                d.setSWH(200, h);
 
             }
         }, 5000);

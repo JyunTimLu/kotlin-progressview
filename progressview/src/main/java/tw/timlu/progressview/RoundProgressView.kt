@@ -44,7 +44,7 @@ class RoundProgressView : View {
         paint2.color = secondColor
         
         if (secondWidth != 0.0 && secondHeight != 0.0) {
-            canvas?.drawRoundRect(RectF(0.toFloat(), 0.toFloat(), width.toFloat() + secondWidth.toFloat()
+            canvas?.drawRoundRect(RectF(0.toFloat(), 0.toFloat(), secondWidth.toFloat()
                     , secondHeight.toFloat()), 100.toFloat(), 100.toFloat(), paint2)
         }
 

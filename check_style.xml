@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+          "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+          "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+    <property name="severity" value="warning"/>
+    <property name="localeCountry" value="US" />
+    <property name="localeLanguage" value="en" />
+
+    <module name="FileLength">
+        <property name="max" value="2500"/>
+        <message key="maxLen.file"
+                value="(´･ω･`) class行數 請盡量在2500行以內'"/>
+    </module>
+
+    <module name="TreeWalker">
+
+        <!-- Checks for imports    -->
+        <module name="AvoidStarImport">
+            <message key="import.avoidStar"
+                value="(´･ω･`)  請避免以.*的import形式'"/>
+        </module>
+
+        <module name="IllegalImport">
+            <message key="import.illegal"
+                value="這是一個不正確的import"/>
+        </module>
+
+
+        <module name="RedundantImport">
+            <message key="import.same"
+                value="(´･ω･`)  請移除重複的import'"/>
+        </module>
+
+        <module name="UnusedImports">
+            <message key="import.unused"
+                value="(´･ω･`)  請移除沒有用到的import'"/>
+        </module>
+
+        <!--option: 定義左大括號“{”顯示位置 eol在同一行顯示 nl在下一行顯示 -->
+        <module name="LeftCurly">
+            <property name="option" value="eol"/>
+            <message key="line.previous" value="( ￣ー￣)σ 字數第 {1} ''{0}'' 應位於上一行。" />
+            <message key="line.alone" value="( ￣ー￣)σ 字數第 {1} ''{0}'' 應位要獨佔一行。" />
+            <message key="line.new" value="( ￣ー￣)σ 字數第 {1} ''{0}'' 應位於新的一行。" />
+        </module>
+
+        <!--option: 定義右大括號“{”顯示位置 same在同一行顯示 along單獨顯示 -->
+        <module name="RightCurly">
+            <property name="option" value="same"/>
+            <message key="line.same" value="(´･д･｀) 字數第 {1} ''{0}'' 應該要與當前程式碼區塊的下一部分(if/else-if/else, do/while 或 try/catch/finally）在同一行" />
+        </module>
+
+        <module name="NeedBraces">
+            <message key="needBraces"
+                value="⊙０⊙ 必須使用大括號{ }" />
+        </module>
+
+
+        <module name="EqualsHashCode"/>
+
+        <module name="IllegalInstantiation">
+            <property name="classes" value="java.lang.Boolean"/>
+        </module>
+
+        <!-- Checks for Naming Conventions.-->
+        <!-- local, final variables, including catch parameters -->
+        <module name="LocalFinalVariableName"/>
+
+        <!-- local, non-final variables, including catch parameters-->
+        <module name="LocalVariableName"/>
+
+        <!-- static, non-final fields -->
+<!--         <module name="StaticVariableName">
+            <property name="format" value="(^[A-Z0-9_]{0,29}$)"/>
+        </module> -->
+
+        <!-- classes and interfaces -->
+        <module name="TypeName">
+            <property name="format" value="(^[A-Z][a-zA-Z0-9]{0,29}$)"/>
+        </module>
+
+        <!-- methods -->
+        <module name="MethodName">
+            <property name="format" value="(^[a-z][a-zA-Z0-9]{0,29}$)"/>
+            <message key="name.invalidPattern"
+             value=" (´･д･｀) Function名稱''{0}''必須符合規則''{1}''"/>
+        </module>
+
+        <!-- non-static fields -->
+        <module name="MemberName">
+            <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$"/>
+            <message key="name.invalidPattern"
+             value="(´･ω･`)  變數名稱''{0}''必須符合規則''{1}''"/>
+        </module>
+
+        <!-- parameters -->
+        <module name="ParameterName">
+            <property name="format" value="(^[a-z][a-zA-Z0-9_]{0,29}$)"/>
+        </module>
+
+        <!-- constants (static,  final fields) -->
+        <module name="ConstantName">
+            <property name="format" value="(^[A-Z0-9_]{0,29}$)"/>
+            <message key="name.invalidPattern"
+             value="(゜Д゜;)  常數名稱''{0}''必須符合規則''{1}''"/>
+        </module>
+
+        <module name="Indentation" />
+
+        <module name="SimplifyBooleanExpression"/>
+
+        <module name="SimplifyBooleanReturn"/>
+
+        <!-- Checks that a class which has only private constructors is declared as final.-->
+        <module name="FinalClass"/>
+
+        <!-- Checks the style of array type definitions. Some like Java-style: public static void main(String[] args) and some like C-style: public static void main(String args[])-->
+        <module name="ArrayTypeStyle">
+            <message key="array.type.style" value="(´･ω･`) 陣列宣告括號位置錯誤, Java-style:String[] args" />
+        </module>
+
+        <!-- A check for TODO: comments. Actually it is a generic regular expression matcher on Java comments. To check for other patterns in Java comments, set property format.-->
+        <module name="TodoComment"/>
+
+        <!--  Checks that long constants are defined with an upper ell. That is ' L' and not 'l'. This is in accordance to the Java Language Specification,  Section 3.10.1.looks a lot like 1. -->
+        <module name="UpperEll"/>
+
+        <!--  Checks that switch statement has "default" clause.
+           Rationale: It's usually a good idea to introduce a default case in every switch statement.
+           Even if the developer is sure that all currently possible cases are covered, this should be expressed in the default branch,
+            e.g. by using an assertion. This way the code is protected aginst later changes, e.g. introduction of new types in an enumeration type. -->
+        <!-- <module name="MissingSwitchDefault"/> -->
+
+        <!--檢查switch中case後是否加入了跳出語法，例如：return、break、throw、continue -->
+        <module name="FallThrough"/>
+
+        <!-- Checks the number of parameters of a method or constructor. -->
+        <module name="ParameterNumber">
+            <property name="max" value="19"/>
+        </module>
+
+        <!-- 每行字數 -->
+        <module name="LineLength">
+            <property name="max" value="200"/>
+        </module>
+
+        <!-- Checks for long methods and constructors. -->
+        <module name="MethodLength">
+            <property name="max" value="300"/>
+        </module>
+
+        <!--- stinrg compare must use equals() -->
+        <module name="StringLiteralEquality">
+        </module>
+
+        <!-- if-else level -->
+        <module name="NestedIfDepth">
+            <property name="max" value="3"/>
+        </module>
+
+        <!-- try-catch level -->
+        <module name="NestedTryDepth">
+            <property name="max" value="2"/>
+        </module>
+
+        <module name="ReturnCount">
+            <property name="max" value="5"/>
+            <property name="format" value="^$"/>
+        </module>
+
+    </module>
+
+</module>
